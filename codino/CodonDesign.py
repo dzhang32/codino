@@ -1,19 +1,26 @@
 class CodonDesign():
 
-    _first = {"A": 0.0,
-              "T": 0.0,
-              "C": 0.0,
-              "G": 0.0}
+    def __init__(self):
 
-    _second = {"A": 0.0,
-               "T": 0.0,
-               "C": 0.0,
-               "G": 0.0}
+        self._first = {"A": 0.0,
+                       "T": 0.0,
+                       "C": 0.0,
+                       "G": 0.0}
 
-    _third = {"A": 0.0,
-              "T": 0.0,
-              "C": 0.0,
-              "G": 0.0}
+        self._second = {"A": 0.0,
+                        "T": 0.0,
+                        "C": 0.0,
+                        "G": 0.0}
+
+        self._third = {"A": 0.0,
+                       "T": 0.0,
+                       "C": 0.0,
+                       "G": 0.0}
+
+    def set_codon_design(self, first, second, third):
+        self.first = first
+        self.second = second
+        self.third = third
 
     @property
     def first(self):
@@ -57,3 +64,4 @@ class CodonDesign():
 
 if __name__ == "__main__":
     pass
+

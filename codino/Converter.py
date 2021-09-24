@@ -6,7 +6,7 @@ class Converter():
         self.cd = CodonDesign()
         self.ct = CodonTable()
 
-    def to_aa(self):
+    def to_aa(self, first, second, third):
         cc = self._cd_to_ct()
         return cc
 

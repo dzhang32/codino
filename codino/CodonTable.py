@@ -1,8 +1,10 @@
-class CodonTable():
+from codino import FreqTable
+
+class CodonTable(FreqTable):
 
     def __init__(self):
 
-        self._freq = {
+        codon_freq = {
             'AAA': 0.00,
             'AAC': 0.00,
             'AAG': 0.00,
@@ -69,26 +71,10 @@ class CodonTable():
             'TTT': 0.00
         }
 
-    def set_freq(self, codon, freq):
-        if codon not in self.freq.keys():
-            raise KeyError("Keys must be codons")
-        elif freq > 1 or freq < 0:
-            raise ValueError("Values must be between 0 and 1")
-        self._freq[codon] = freq
-
-    def _check_freq(self):
-        # check frequencies sum to 1
-        # but needs to factor in they start at all 0
-        pass
-
-    @property
-    def freq(self):
-        return self._freq
+        super().__init__(codon_freq)
 
 if __name__ == "__main__":
-
-    y = CodonTable()
-    y._check_freq()
+    pass
 
 
 

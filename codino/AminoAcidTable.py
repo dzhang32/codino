@@ -1,30 +1,8 @@
-class AminoAcidTable():
+from codino import FreqTable
+
+class AminoAcidTable(FreqTable):
 
     def __init__(self):
-
-        self._freq = {
-            "A": 0.00,
-            "C": 0.00,
-            "D": 0.00,
-            "E": 0.00,
-            "F": 0.00,
-            "G": 0.00,
-            "H": 0.00,
-            "I": 0.00,
-            "K": 0.00,
-            "L": 0.00,
-            "M": 0.00,
-            "N": 0.00,
-            "P": 0.00,
-            "Q": 0.00,
-            "R": 0.00,
-            "S": 0.00,
-            "T": 0.00,
-            "V": 0.00,
-            "W": 0.00,
-            "X": 0.00,
-            "Y": 0.00
-        }
 
         self._aa_to_codon = {
             "C": ["TGC", "TGT"],
@@ -50,19 +28,31 @@ class AminoAcidTable():
             "X": ["TAA", "TAG", "TGA"]
         }
 
-    def get_non_0_freq(self):
-        return {k:v for (k,v) in self.freq.items() if v != 0.0}
+        aa_freq = {
+            "A": 0.00,
+            "C": 0.00,
+            "D": 0.00,
+            "E": 0.00,
+            "F": 0.00,
+            "G": 0.00,
+            "H": 0.00,
+            "I": 0.00,
+            "K": 0.00,
+            "L": 0.00,
+            "M": 0.00,
+            "N": 0.00,
+            "P": 0.00,
+            "Q": 0.00,
+            "R": 0.00,
+            "S": 0.00,
+            "T": 0.00,
+            "V": 0.00,
+            "W": 0.00,
+            "X": 0.00,
+            "Y": 0.00
+        }
 
-    def set_freq(self, aa, freq):
-        if aa not in self.freq.keys():
-            raise KeyError("Keys must be amino acids")
-        elif freq > 1 or freq < 0:
-            raise ValueError("Values must be between 0 and 1")
-        self._freq[aa] = freq
-
-    @property
-    def freq(self):
-        return self._freq
+        super().__init__(aa_freq)
 
     @property
     def aa_to_codon(self):
@@ -72,4 +62,4 @@ if __name__ == "__main__":
 
     y = AminoAcidTable()
     print(y.freq)
-    print({key:value for (key,value) in y.freq.items() if value != 0.0})
+    print(y.get_non_0_freq())

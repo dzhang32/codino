@@ -49,19 +49,11 @@ class CodonDesign():
         poss_keys = ["A", "T", "C", "G"]
 
         if any([k not in poss_keys for k in value.keys()]):
-            raise KeyError("Keys must be nucleotides")
+            raise KeyError('Keys must be nucleotides')
 
     def _check_values(self, value):
         if any([v > 1 or v < 0 for v in value.values()]):
             raise ValueError("Values must be between 0 and 1")
 
 if __name__ == "__main__":
-
-    x = CodonDesign()
-
-    print(x.third)
-    x.third = {"A" : 1.0}
-    print(x.third)
-
-    # x.third = {"D": 1.0}
-    x.third = {"A": 4.0}
+    pass

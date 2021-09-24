@@ -12,7 +12,7 @@ jobs:
   # modified from https://github.com/pypa/pip/blob/main/.github/workflows/ci.yml
   test-package:
 
-    name: tests / ${{ matrix.python }} / ${{ matrix.os }}
+    name: test / ${{ matrix.python }} / ${{ matrix.os }}
     runs-on: ${{ matrix.os }}-latest
 
     strategy:

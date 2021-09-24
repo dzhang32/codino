@@ -1,0 +1,63 @@
+name: test-deploy-package
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # modified from https://github.com/pypa/pip/blob/main/.github/workflows/ci.yml
+  test-package:
+
+    name: tests / ${{ matrix.python }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ Ubuntu, MacOS ]
+        python:
+          - 3.8
+          - 3.9
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install Ubuntu dependencies
+        if: matrix.os == 'Ubuntu'
+        run: sudo apt-get install bzr
+
+      - name: Install MacOS dependencies
+        if: matrix.os == 'MacOS'
+        run: brew install bzr
+
+      - name: Check pip installation
+        run: |
+          python3 -m pip install git+https://github.com/dzhang32/pyutils.git
+          python3 -m pip uninstall -y pyutils
+
+      - name: Install package and dependencies
+        run: |
+          pwd
+          python3 setup.py install
+
+      - name: Run unit testing
+        run: |
+          python3 -m pip install pytest
+          python3 -m pytest
+
+      - name: Generate coverage report
+        if: matrix.os == 'Ubuntu' && matrix.python == '3.9'
+        run: |
+          python3 -m pip install coverage
+          coverage run --source=./src/pyutils -m pytest && coverage report -m && coverage xml
+
+      - name: Upload Coverage to Codecov
+        if: matrix.os == 'Ubuntu' && matrix.python == '3.9'
+        uses: codecov/codecov-action@v2

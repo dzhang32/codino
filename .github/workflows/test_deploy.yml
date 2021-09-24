@@ -49,6 +49,7 @@ jobs:
 
       - name: Run unit testing
         run: |
+          ls
           python3 -m pip install pytest
           python3 -m pytest
 

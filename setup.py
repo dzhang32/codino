@@ -21,7 +21,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir={"": "codon_aa_freq"},
-    packages=setuptools.find_packages(where="codon_aa_freq"),
+    package_dir={"": "."},
+    packages=setuptools.find_packages(where="."),
     python_requires=">=3.8",
 )

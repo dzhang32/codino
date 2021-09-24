@@ -1,5 +1,4 @@
-from CodonTable import CodonTable
-from CodonDesign import CodonDesign
+from codino import CodonDesign, CodonTable
 
 class Converter():
 

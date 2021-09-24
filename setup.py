@@ -12,9 +12,9 @@ setuptools.setup(
                 "vice-versa",
     long_description=long_description,
     long_description_content_type="text/md",
-    url="https://github.com/dzhang32/codon_aa_freq",
+    url="https://github.com/dzhang32/codino",
     project_urls={
-        "Bug Tracker": "https://github.com/dzhang32/codon_aa_freq/issues",
+        "Bug Tracker": "https://github.com/dzhang32/codino/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",

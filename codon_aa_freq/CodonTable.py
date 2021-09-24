@@ -73,12 +73,21 @@ class CodonTable():
 
     @freq.setter
     def freq(self, value):
-        pass
+        if any([k not in self.freq.keys() for k in value.keys()]):
+            raise KeyError("Keys must be codons")
+
+        if any([v > 1 or v < 0 for v in value.values()]):
+            raise ValueError("Values must be between 0 and 1")
+
+        self.freq.update(value)
 
 if __name__ == "__main__":
 
     x = CodonTable()
     print(x.freq)
-    y = {"a": 5, "b": 4}
-    y.update({"a": 2})
-    print(y)
+    x.freq = {"AAA": 5}
+    print(x.freq)
+
+
+
+

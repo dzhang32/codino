@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="codon_aa_freq",
+    name="codino",
     version="0.0.1",
     author="David Zhang",
     author_email="dyzhang32@gmail.com",

@@ -4,16 +4,20 @@ from codino import FreqTable
 
 ft = FreqTable({"A": 0, "T": 0, "C": 0, "G": 0})
 
-def test_get_freq_property():
+
+def test_get_freq():
     assert ft.freq == {"A": 0, "T": 0, "C": 0, "G": 0}
     assert ft.freq == ft._freq
 
-def test_set_freq_property():
+
+def test_set_freq():
     ft.freq = {"A": 0.5, "C": 0.5}
     assert ft.freq == {"A": 0.5, "T": 0, "C": 0.5, "G": 0}
 
-def test_get_non_0_freq_property():
+
+def test_get_non_0_freq():
     assert ft.get_non_0_freq() == {"A": 0.5, "C": 0.5}
+
 
 def test_set_freq_catches_input_errors():
     with pytest.raises(TypeError):

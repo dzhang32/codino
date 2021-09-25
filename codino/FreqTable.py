@@ -13,17 +13,7 @@ class FreqTable:
         self._check_keys(value)
         self._check_values(value)
 
-        self._freq.update(value)
-
-    def set_ind_freq(self, key, value):
-        if key not in self.freq.keys():
-            raise KeyError("Keys must be one of" +
-                           ", ".join(self.freq.keys()))
-
-        elif value > 1 or value < 0:
-            raise ValueError("Values must be between 0 and 1")
-
-        self._freq[key] = value
+        self.freq.update(value)
 
     def get_non_0_freq(self):
         return {k: v for (k, v) in self.freq.items() if v != 0.0}
@@ -37,16 +27,19 @@ class FreqTable:
         poss_keys = self.freq.keys()
 
         if any([k not in poss_keys for k in value.keys()]):
-            raise KeyError("Keys must be one of" +
+            raise KeyError("Keys must be one of: " +
                            ", ".join(self.freq.keys()))
 
-    @staticmethod
-    def _check_values(value):
+    def _check_values(self, value):
         if any([v > 1 or v < 0 for v in value.values()]):
             raise ValueError("Values must be between 0 and 1")
-        elif sum(value.values()) != 1:
+
+        # check that values sum to 1, without changing _freq attribute
+        # round(X, 3) - avoid math errors causing problems
+        tmp_freq = self._freq.copy()
+        tmp_freq.update(value)
+        if round(sum(tmp_freq.values()), 3) != 1:
             raise ValueError("Values must sum to 1")
 
-
 if __name__ == "__main__":
-    x = FreqTable()
+    pass

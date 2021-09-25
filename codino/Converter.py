@@ -7,12 +7,13 @@ class Converter():
         self.ct = CodonTable()
         self.aat = AminoAcidTable()
 
-    def to_aa(self, first, second, third):
+    def cd_to_aa(self, first, second, third):
         self.cd.set_codon_design(first, second, third)
         self._cd_to_ct()
         self._ct_to_aa()
 
     def _cd_to_ct(self):
+        new_freq = {}
         for k1 in self.cd.first.freq:
             if self.cd.first.freq[k1] == 0.0:
                 continue
@@ -27,30 +28,32 @@ class Converter():
                            x.cd.second.freq[k2] * \
                            x.cd.third.freq[k3]
 
-                    self.ct.set_ind_freq(codon, freq)
+                    new_freq[codon] = freq
+
+        # use freq.setter - check values sum to 1
+        self.ct.freq = new_freq
 
     def _ct_to_aa(self):
         for aa, codons in self.aat.aa_to_codon.items():
             freq = sum([self.ct.freq[c] for c in codons])
-            self.aat.set_ind_freq(aa, freq)
+            self.aat.freq[aa] = freq
 
 if __name__ == "__main__":
 
     x = Converter()
-    x.to_aa(first = {"A": 1.0},
+    x.cd_to_aa(first = {"A": 1.0},
             second = {"T": 1.0},
             third = {"G": 1.0})
     print(x.aat.get_non_0_freq())
 
     x = Converter()
-    x.to_aa(first={"G": 1.0},
+    x.cd_to_aa(first={"G": 1.0},
             second={"A": 1.0},
             third={"C": 0.41,
                    "G": 0.59})
     print(x.aat.get_non_0_freq())
-
     x = Converter()
-    x.to_aa(first={"G": 0.77, "A": 0.23},
+    x.cd_to_aa(first={"G": 0.77, "A": 0.23},
             second={"A": 0.51,
                     "T": 0.26,
                     "C": 0.23},

@@ -1,5 +1,6 @@
 from codino import CodonDesign, CodonTable, AminoAcidTable
 
+
 class Converter():
 
     def __init__(self):

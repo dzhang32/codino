@@ -1,5 +1,6 @@
 from codino import FreqTable
 
+
 class CodonTable(FreqTable):
 
     def __init__(self):

@@ -1,7 +1,7 @@
 from codino import CodonDesign, CodonTable, AminoAcidTable
 
 
-class Converter():
+class Converter:
 
     def __init__(self):
         self.cd = CodonDesign()

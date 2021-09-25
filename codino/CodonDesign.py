@@ -25,5 +25,6 @@ class CodonDesign():
         self.second.freq = second
         self.third.freq = third
 
+
 if __name__ == "__main__":
     pass

@@ -25,5 +25,4 @@ class CodonDesign():
         self.third.freq = third
 
 if __name__ == "__main__":
-    x = CodonDesign()
-    x.third.freq = {"A": 0.0, "T": 0.0}
+    pass

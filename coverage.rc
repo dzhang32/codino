@@ -4,3 +4,5 @@ omit =
     */test/*
     # omit anything with setup
     *setup*
+    # omit example.py
+    */example.py

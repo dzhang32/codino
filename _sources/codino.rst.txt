@@ -10,6 +10,17 @@ Subpackages
    codino.data
    codino.process
 
+Submodules
+----------
+
+codino.example module
+---------------------
+
+.. automodule:: codino.example
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

@@ -9,7 +9,7 @@ codino
 
 |
 
-``codino`` takes as input a codon design, the frequency of the nucleotides at each position, then outputs the expected amino acid frequency. 
+``codino`` converts a codon design (the frequency of each nucleotide at each position in a codon) to the expected amino acid frequencies, and vice versa.
 
 Installation instructions
 -------------------------
@@ -31,16 +31,21 @@ Or, by cloning this repo and running `setup.py`
 Usage
 -----
 
+For a more complete example, please see `example.py <https://github.com/dzhang32/codino/blob/main/example.py>`_
+
 .. code-block:: text
 
   from codino.process import Converter
   
   c = Converter()
   
-  # input the frequencies at each position
+  # converting from codon design to AA frequencies
   c.cd_to_aa(first = {"A": 1}, second = {"T": 1}, third = {"G": 1})
-  
   # Out: {'M': 1}
+
+  # converting from AA frequency to codon design
+  c.aa_to_cd(aa={'M': 1})
+  # Out: ({'A': 1.0}, {'T': 1.0}, {'G': 1.0})
 
 Development tools
 -----------------

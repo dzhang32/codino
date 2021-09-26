@@ -41,6 +41,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">codino</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation-instructions">Installation instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#development-tools">Development tools</a></li>
 </ul>
 </li>
@@ -78,7 +79,7 @@
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">codino</span></code> takes as input a codon design, the frequency of the nucleotides at each position, then outputs the expected amino acid frequency. Hopefully, in future, it will also do the reverse.</p>
+<p><code class="docutils literal notranslate"><span class="pre">codino</span></code> takes as input a codon design, the frequency of the nucleotides at each position, then outputs the expected amino acid frequency.</p>
 <section id="installation-instructions">
 <h2>Installation instructions<a class="headerlink" href="#installation-instructions" title="Permalink to this headline"></a></h2>
 <p>Install the development version from GitHub using <cite>pip</cite></p>
@@ -89,6 +90,19 @@
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/dzhang32/codino
 cd pyutils
 python3 setup.py install
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>from codino.process import Converter
+
+c = Converter()
+
+# input the frequencies at each position
+c.cd_to_aa(first = {&quot;A&quot;: 1}, second = {&quot;T&quot;: 1}, third = {&quot;G&quot;: 1})
+
+# Out: {&#39;M&#39;: 1}
 </pre></div>
 </div>
 </section>

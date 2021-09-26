@@ -53,7 +53,7 @@ class Converter:
             after obtaining the codon design.
 
         Returns:
-            tuble: Estimated codon design to obtain the inputted AA
+            tuple: Estimated codon design to obtain the inputted AA
             frequencies.
         """
         self.aat.freq = aa
@@ -105,6 +105,7 @@ class Converter:
 
         # for each aa, for each codon, for each nucleotide
         # sum the exp freq for the original AA divided by number of codons
+        # this will be an estimate of the codon design
         for aa, freq in self.aat.get_non_0_freq().items():
             codons = self.aat.aa_to_codon[aa]
             for c in codons:

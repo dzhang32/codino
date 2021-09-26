@@ -19,6 +19,12 @@ def test_get_non_0_freq():
     assert ft.get_non_0_freq() == {"A": 0.5, "C": 0.5}
 
 
+def test_refresh():
+    ft.refresh()
+    assert ft.freq == {"A": 0, "T": 0, "C": 0, "G": 0}
+    assert ft.get_non_0_freq() == {}
+
+
 def test_set_freq_catches_input_errors():
     with pytest.raises(TypeError):
         ft.freq = 5

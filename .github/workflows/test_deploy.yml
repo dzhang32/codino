@@ -63,7 +63,7 @@ jobs:
         if: matrix.os == 'Ubuntu' && matrix.python == '3.9'
         uses: codecov/codecov-action@v2
 
- deploy-package:
+  deploy-package:
     # deploy-package only runs if tests pass
     needs: test-package
     runs-on: ubuntu-latest

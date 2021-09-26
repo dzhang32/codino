@@ -48,7 +48,3 @@ class FreqTable:
 
         elif round(sum(tmp_freq.values()), 3) != 1:
             raise ValueError("Values must sum to 1")
-
-
-if __name__ == "__main__":
-    pass

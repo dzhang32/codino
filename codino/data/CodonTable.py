@@ -73,12 +73,3 @@ class CodonTable(FreqTable):
         }
 
         super().__init__(codon_freq)
-
-
-if __name__ == "__main__":
-    pass
-
-
-
-
-

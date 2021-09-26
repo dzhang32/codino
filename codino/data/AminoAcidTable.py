@@ -58,6 +58,3 @@ class AminoAcidTable(FreqTable):
     @property
     def aa_to_codon(self):
         return self._aa_to_codon
-
-if __name__ == "__main__":
-    pass

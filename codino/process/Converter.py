@@ -1,4 +1,4 @@
-from codino.data import FreqTable, CodonDesign, CodonTable, AminoAcidTable
+from codino.data import CodonDesign, CodonTable, AminoAcidTable
 
 
 class Converter:

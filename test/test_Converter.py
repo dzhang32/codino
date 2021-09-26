@@ -68,7 +68,7 @@ def test_aa_to_cd():
 
     first, second, third = con.aa_to_cd(aa=exp_aa)
     pred_aa = con.cd_to_aa(first, second, third)
-    errors = [pred_aa[a] - exp_aa[a] for a in exp_aa]
+    errors = [abs(pred_aa[a] - exp_aa[a]) for a in exp_aa]
 
     # max error for any single AA within +/- 0.05 frequency
     # actual: 0.012826741200000009
@@ -76,7 +76,7 @@ def test_aa_to_cd():
 
     # mean error within +/- 0.05 frequency
     # actual: 0.0055103958222222325
-    assert max(errors) < 0.05
+    assert sum(errors)/len(errors) < 0.05
 
     # total error within +/- 0.1
     # actual: 0.049593562400000096

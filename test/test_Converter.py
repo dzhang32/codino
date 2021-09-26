@@ -3,12 +3,16 @@ from codino.process import Converter
 
 con = Converter()
 
-def test_default_Converter():
+
+def test_default_types():
+
     assert type(con.cd) is CodonDesign
     assert type(con.ct) is CodonTable
     assert type(con.aat) is AminoAcidTable
 
+
 def test_cd_to_aa():
+
     aa_freq_1 = con.cd_to_aa(first={"A": 1.0},
                              second={"T": 1.0},
                              third={"G": 1.0})
@@ -18,7 +22,8 @@ def test_cd_to_aa():
                              third={"C": 0.41,
                                     "G": 0.59})
 
-    aa_freq_3 = con.cd_to_aa(first={"G": 0.77, "A": 0.23},
+    aa_freq_3 = con.cd_to_aa(first={"G": 0.77,
+                                    "A": 0.23},
                              second={"A": 0.51,
                                      "T": 0.26,
                                      "C": 0.23},
@@ -38,7 +43,9 @@ def test_cd_to_aa():
                          'T': 0.0529,
                          'V': 0.2002}
 
+
 def test_refresh():
+
     con.cd_to_aa(first={"A": 1.0},
                  second={"T": 1.0},
                  third={"G": 1.0},
@@ -53,4 +60,3 @@ def test_refresh():
     assert con.cd.third.get_non_0_freq() == {}
     assert con.ct.get_non_0_freq() == {}
     assert con.aat.get_non_0_freq() == {}
-

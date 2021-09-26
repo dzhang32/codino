@@ -25,7 +25,7 @@ Or, by cloning this repo and running `setup.py`
 .. code-block:: text
 
   git clone https://github.com/dzhang32/codino
-  cd pyutils
+  cd codino
   python3 setup.py install
   
 Usage

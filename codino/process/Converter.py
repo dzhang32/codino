@@ -1,4 +1,4 @@
-from codino.data import CodonDesign, CodonTable, AminoAcidTable
+from codino.data import FreqTable, CodonDesign, CodonTable, AminoAcidTable
 
 
 class Converter:
@@ -44,6 +44,30 @@ class Converter:
 
         return aa_freq
 
+    def aa_to_cd(self, aa: dict, refresh: bool = True) -> tuple:
+        """Convert AA frequencies to codon design
+
+       Args:
+            aa (dict): AA frequencies.
+            refresh (bool): Whether to refresh the frequencies in the Convertor
+            after obtaining the codon design.
+
+        Returns:
+            tuble: Estimated codon design to obtain the inputted AA
+            frequencies.
+        """
+        self.aat.freq = aa
+        self._aa_to_cd()
+
+        cd_freq = (self.cd.first.get_non_0_freq(),
+                   self.cd.second.get_non_0_freq(),
+                   self.cd.third.get_non_0_freq())
+
+        if refresh:
+            self.refresh()
+
+        return cd_freq
+
     def _cd_to_ct(self) -> None:
         """Convert codon design into codon frequencies"""
         new_freq = {}
@@ -72,6 +96,25 @@ class Converter:
             # using list comprehension - try a generator here?
             freq = sum([self.ct.freq[c] for c in codons])
             self.aat.freq[aa] = freq
+
+    def _aa_to_cd(self) -> None:
+        """Convert AA frequencies to codon frequencies"""
+        first = {"A": 0, "T": 0, "C": 0, "G": 0}
+        second = {"A": 0, "T": 0, "C": 0, "G": 0}
+        third = {"A": 0, "T": 0, "C": 0, "G": 0}
+
+        # for each aa, for each codon, for each nucleotide
+        # sum the exp freq for the original AA divided by number of codons
+        for aa, freq in self.aat.get_non_0_freq().items():
+            codons = self.aat.aa_to_codon[aa]
+            for c in codons:
+                first[c[0]] = first.get(c[0], 0) + freq/len(codons)
+                second[c[1]] = second.get(c[1], 0) + freq/len(codons)
+                third[c[2]] = third.get(c[2], 0) + freq/len(codons)
+
+        self.cd.first.freq = first
+        self.cd.second.freq = second
+        self.cd.third.freq = third
 
     def refresh(self) -> None:
         """Refresh the frequencies in the codon design, codon table and AA table

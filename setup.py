@@ -1,6 +1,6 @@
 import setuptools
 
-with open("README.md", "r", encoding="utf-8") as fh:
+with open("README.rst", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
@@ -8,10 +8,9 @@ setuptools.setup(
     version="0.0.1",
     author="David Zhang",
     author_email="dyzhang32@gmail.com",
-    description="Calculating AA frequencies from codon frequencies and "
-                "vice-versa",
+    description="Calculating AA frequencies from codon design",
     long_description=long_description,
-    long_description_content_type="text/md",
+    long_description_content_type="text/x-rst",
     url="https://github.com/dzhang32/codino",
     project_urls={
         "Bug Tracker": "https://github.com/dzhang32/codino/issues",

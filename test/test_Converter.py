@@ -1,4 +1,5 @@
-from codino import CodonDesign, CodonTable, AminoAcidTable, Converter
+from codino.data import CodonDesign, CodonTable, AminoAcidTable
+from codino.process import Converter
 
 con = Converter()
 

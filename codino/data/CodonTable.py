@@ -1,4 +1,4 @@
-from codino import FreqTable
+from codino.data import FreqTable
 
 
 class CodonTable(FreqTable):

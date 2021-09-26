@@ -1,4 +1,5 @@
-from codino import FreqTable
+from codino.data import FreqTable
+
 
 class AminoAcidTable(FreqTable):
 
@@ -59,7 +60,4 @@ class AminoAcidTable(FreqTable):
         return self._aa_to_codon
 
 if __name__ == "__main__":
-
-    y = AminoAcidTable()
-    print(y.freq)
-    print(y.get_non_0_freq())
+    pass

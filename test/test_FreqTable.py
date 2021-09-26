@@ -1,6 +1,6 @@
 import pytest
 
-from codino import FreqTable
+from codino.data import FreqTable
 
 ft = FreqTable({"A": 0, "T": 0, "C": 0, "G": 0})
 

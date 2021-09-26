@@ -37,10 +37,10 @@ jobs:
         if: matrix.os == 'MacOS'
         run: brew install bzr
 
-#      - name: Check pip installation
-#        run: |
-#          python3 -m pip install git+https://github.com/dzhang32/codino.git
-#          python3 -m pip uninstall -y codino
+      - name: Check pip installation
+        run: |
+          python3 -m pip install git+https://github.com/dzhang32/codino.git
+          python3 -m pip uninstall -y codino
 
       - name: Install package and dependencies
         run: |

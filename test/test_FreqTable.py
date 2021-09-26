@@ -27,6 +27,9 @@ def test_refresh():
 
 def test_set_freq_catches_input_errors():
     with pytest.raises(TypeError):
+        FreqTable(1)
+
+    with pytest.raises(TypeError):
         ft.freq = 5
 
     with pytest.raises(KeyError):

@@ -2,20 +2,37 @@ from codino.data import CodonDesign, CodonTable, AminoAcidTable
 
 
 class Converter:
+    def __init__(self) -> None:
+        """Converter class for converting codon designs to amino acid
+        frequencies.
 
-    def __init__(self):
+        Contains methods to take as input the codon design (frequency of
+        nucleotides at each position) then return the AA frequencies they would
+        be predicted to generate. In future, Converter will hopefully also be
+        able to do the reverse.
+        """
         self.cd = CodonDesign()
         self.ct = CodonTable()
         self.aat = AminoAcidTable()
 
-    def refresh(self):
-        self.cd.first.refresh()
-        self.cd.second.refresh()
-        self.cd.third.refresh()
-        self.ct.refresh()
-        self.aat.refresh()
+    def cd_to_aa(self, first: dict, second: dict, third: dict,
+                 refresh: bool = True) -> dict:
+        """Convert codon design to AA frequencies
 
-    def cd_to_aa(self, first, second, third, refresh=True):
+        Takes as input the nucleotide frequencies at each position in a codon,
+        then calculates the predicted AA frequencies.
+
+       Args:
+            first (dict): nucleotide frequencies for first position.
+            second (dict): nucleotide frequencies for second position.
+            third (dict): nucleotide frequencies for third position.
+            refresh (bool): Whether to refresh the frequencies in the Convertor
+            after obtaining the AA frequencies.
+
+        Returns:
+            dict: Frequencies of the AA which are predicted to be generated from
+            the codon design.
+        """
         self.cd.set_codon_design(first, second, third)
         self._cd_to_ct()
         self._ct_to_aa()
@@ -27,7 +44,8 @@ class Converter:
 
         return aa_freq
 
-    def _cd_to_ct(self):
+    def _cd_to_ct(self) -> None:
+        """Convert codon design into codon frequencies"""
         new_freq = {}
         for k1 in self.cd.first.freq:
             if self.cd.first.freq[k1] == 0.0:
@@ -48,13 +66,19 @@ class Converter:
         # use freq.setter - check values sum to 1
         self.ct.freq = new_freq
 
-    def _ct_to_aa(self):
+    def _ct_to_aa(self) -> None:
+        """Convert codon frequencies to AA frequencies"""
         for aa, codons in self.aat.aa_to_codon.items():
+            # using list comprehension - try a generator here?
             freq = sum([self.ct.freq[c] for c in codons])
             self.aat.freq[aa] = freq
 
-if __name__ == "__main__":
-    pass
-
-
-
+    def refresh(self) -> None:
+        """Refresh the frequencies in the codon design, codon table and AA table
+        back to 0.
+        """
+        self.cd.first.refresh()
+        self.cd.second.refresh()
+        self.cd.third.refresh()
+        self.ct.refresh()
+        self.aat.refresh()

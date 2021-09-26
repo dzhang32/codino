@@ -62,7 +62,7 @@ class FreqTable:
             raise KeyError("Keys must be one of: " +
                            ", ".join(self.freq.keys()))
 
-    def _check_values(self, value):
+    def _check_values(self, value: dict) -> None:
         """Check if input values are between 0-1 and sum to 0/1"""
         if any([v > 1 or v < 0 for v in value.values()]):
             raise ValueError("Values must be between 0 and 1")

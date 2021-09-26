@@ -2,9 +2,13 @@ from codino.data import FreqTable
 
 
 class AminoAcidTable(FreqTable):
+    def __init__(self) -> None:
+        """AminoAcidTable class for storing AA frequencies and mapping.
 
-    def __init__(self):
-
+        Stores the frequency of each AA as well as a map, detailing which of the
+        codons is translated into which AA.
+        """
+        # codons are stored as lists - consider an immutable type, tuples?
         self._aa_to_codon = {
             "C": ["TGC", "TGT"],
             "S": ["AGC", "AGT", "TCA", "TCC", "TCG", "TCT"],
@@ -56,5 +60,10 @@ class AminoAcidTable(FreqTable):
         super().__init__(aa_freq)
 
     @property
-    def aa_to_codon(self):
+    def aa_to_codon(self) -> dict:
+        """Obtain the AA to codon mapping
+
+        Returns:
+            dict: details which AAs are encoded by which codons.
+        """
         return self._aa_to_codon

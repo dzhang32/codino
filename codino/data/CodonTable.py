@@ -2,8 +2,11 @@ from codino.data import FreqTable
 
 
 class CodonTable(FreqTable):
+    def __init__(self) -> None:
+        """CodonTable class for storing codon frequencies.
 
-    def __init__(self):
+        Stores the frequency of each of the possible 64 codons.
+        """
 
         codon_freq = {
             'AAA': 0.00,

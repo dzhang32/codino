@@ -1,6 +1,6 @@
 [run]
 omit =
     # omit anything /tests/ directory
-    */tests/*
+    */test/*
     # omit anything with setup
     *setup*

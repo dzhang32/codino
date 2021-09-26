@@ -37,14 +37,14 @@ class FreqTable:
         if any([v > 1 or v < 0 for v in value.values()]):
             raise ValueError("Values must be between 0 and 1")
 
-        # check that values sum to 0 (when refresh) or 1
+        # check that values sum to 0 (when calling .refresh) or 1
         # without changing the _freq attribute
         # round(X, 3) - avoid math errors causing problems
         tmp_freq = self._freq.copy()
         tmp_freq.update(value)
 
-        if all([v == 0 for v in tmp_freq.values()]):
-            print("All values = 0 - refreshing frequencies")
+        if round(sum(tmp_freq.values()), 3) == 0:
+            pass
 
         elif round(sum(tmp_freq.values()), 3) != 1:
             raise ValueError("Values must sum to 1")

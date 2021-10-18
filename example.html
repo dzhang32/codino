@@ -76,7 +76,7 @@
              
   <section class="tex2jax_ignore mathjax_ignore" id="example-usage">
 <h1>Example usage<a class="headerlink" href="#example-usage" title="Permalink to this headline"></a></h1>
-<p>To use <code class="docutils literal notranslate"><span class="pre">codino</span></code> in a project:</p>
+<p>The main goal of <code class="docutils literal notranslate"><span class="pre">codino</span></code> is to convert amino acid (AA) frequencies to codon design (CD), and vice versa.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">codino</span>
@@ -86,7 +86,89 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1.1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Users should initialise a <code class="docutils literal notranslate"><span class="pre">Converter</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">codino</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">Converter</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_3511</span><span class="o">/</span><span class="mf">2011635181.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">c</span> <span class="o">=</span> <span class="n">codino</span><span class="o">.</span><span class="n">process</span><span class="o">.</span><span class="n">Converter</span><span class="p">()</span>
+
+<span class="ne">AttributeError</span>: module &#39;codino&#39; has no attribute &#39;process&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The two useful methods within a <code class="docutils literal notranslate"><span class="pre">Converter</span></code> are <code class="docutils literal notranslate"><span class="pre">cd_to_aa()</span></code> and <code class="docutils literal notranslate"><span class="pre">aa_to_cd()</span></code>, which converts a CD to AA frequencies and vice versa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># input the expected nucleotide frequencies at each position</span>
+<span class="n">c</span><span class="o">.</span><span class="n">cd_to_aa</span><span class="p">(</span><span class="n">first</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">second</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span> <span class="n">third</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;G&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+
+<span class="c1"># input the desired AA frequencies</span>
+<span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">third</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">aa_to_cd</span><span class="p">(</span><span class="n">aa</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">})</span>
+
+<span class="c1"># you can check the output by converting the codon design back to AA frequencies</span>
+<span class="n">c</span><span class="o">.</span><span class="n">cd_to_aa</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">third</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mf">0.6</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>For more complex examples, the conversion of the AA frequencies to a CD will be an estimate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exp_aa</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="mf">0.1771</span><span class="p">,</span>
+          <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="mf">0.208131</span><span class="p">,</span>
+          <span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="mf">0.18456899999999998</span><span class="p">,</span>
+          <span class="s1">&#39;I&#39;</span><span class="p">:</span> <span class="mf">0.031694</span><span class="p">,</span>
+          <span class="s1">&#39;K&#39;</span><span class="p">:</span> <span class="mf">0.055131</span><span class="p">,</span>
+          <span class="s1">&#39;M&#39;</span><span class="p">:</span> <span class="mf">0.028106000000000003</span><span class="p">,</span>
+          <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="mf">0.062169</span><span class="p">,</span>
+          <span class="s1">&#39;T&#39;</span><span class="p">:</span> <span class="mf">0.0529</span><span class="p">,</span>
+          <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="mf">0.2002</span><span class="p">}</span>
+
+<span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">third</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">aa_to_cd</span><span class="p">(</span><span class="n">aa</span><span class="o">=</span><span class="n">exp_aa</span><span class="p">)</span>
+<span class="n">pred_aa</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">cd_to_aa</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">third</span><span class="p">)</span>
+
+<span class="n">pred_aa</span> <span class="o">==</span> <span class="n">exp_aa</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, it can be helpful to obtain the error between the expected and predicted AA frequencies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">errors</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">pred_aa</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">-</span> <span class="n">exp_aa</span><span class="p">[</span><span class="n">a</span><span class="p">])</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">exp_aa</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Average error per AA ==&gt; </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Total error across AAs ==&gt; </span><span class="si">{</span><span class="nb">sum</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average error per AA ==&gt; 0.0055103958222222325
+Total error across AAs ==&gt; 0.049593562400000096
 </pre></div>
 </div>
 </div>

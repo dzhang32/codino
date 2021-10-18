@@ -14,6 +14,8 @@ pip install codino
 
 ## Usage
 
+Below gives a simple example of how to use `codino`. If you are interested to see how `codino` performs on more complicated examples, please see the [example page](https://dzhang32.github.io/codino/example.html) of the documentation. 
+
 ```python
 from codino.process import Converter
 

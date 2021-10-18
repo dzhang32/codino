@@ -1,5 +1,8 @@
 # codino
 
+[![test-deploy-package](https://github.com/dzhang32/codino/workflows/test-deploy-package/badge.svg)](https://github.com/dzhang32/codino/actions?query=workflow%3Atest-deploy-package)
+[![Codecov](https://codecov.io/gh/dzhang32/codino/branch/main/graph/badge.svg)](https://app.codecov.io/gh/dzhang32/codino?branch=main)
+
 Calculating amino acid frequencies from codon design, and vice versa
 
 ## Installation

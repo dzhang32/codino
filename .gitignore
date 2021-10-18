@@ -1,5 +1,5 @@
+dist/
 .idea/
 *__pycache__*
-poetry.lock
 docs/_build
 .DS_Store

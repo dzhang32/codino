@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; codino 0.0.1 documentation</title>
+  <title>Index &mdash; codino  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/mystnb.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -14,6 +17,8 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -34,10 +39,12 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="readme.html">codino</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">codino</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
 </ul>
 
         </div>
@@ -67,7 +74,8 @@
 <h1 id="index">Index</h1>
 
 <div class="genindex-jumpbox">
- <a href="#A"><strong>A</strong></a>
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
  | <a href="#C"><strong>C</strong></a>
  | <a href="#F"><strong>F</strong></a>
  | <a href="#G"><strong>G</strong></a>
@@ -76,58 +84,120 @@
  | <a href="#S"><strong>S</strong></a>
  
 </div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/codino/index.html#codino.__version__">__version__ (in module codino)</a>
+</li>
+      <li><a href="autoapi/codino/process/index.html#codino.process.Converter._aa_to_cd">_aa_to_cd() (codino.process.Converter method)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/process/Converter/index.html#codino.process.Converter.Converter._aa_to_cd">(codino.process.Converter.Converter method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/codino/process/index.html#codino.process.Converter._cd_to_ct">_cd_to_ct() (codino.process.Converter method)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/process/Converter/index.html#codino.process.Converter.Converter._cd_to_ct">(codino.process.Converter.Converter method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/codino/data/index.html#codino.data.FreqTable._check_dict">_check_dict() (codino.data.FreqTable static method)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/data/FreqTable/index.html#codino.data.FreqTable.FreqTable._check_dict">(codino.data.FreqTable.FreqTable static method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="autoapi/codino/data/index.html#codino.data.FreqTable._check_keys">_check_keys() (codino.data.FreqTable method)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/data/FreqTable/index.html#codino.data.FreqTable.FreqTable._check_keys">(codino.data.FreqTable.FreqTable method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/codino/data/index.html#codino.data.FreqTable._check_values">_check_values() (codino.data.FreqTable method)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/data/FreqTable/index.html#codino.data.FreqTable.FreqTable._check_values">(codino.data.FreqTable.FreqTable method)</a>
+</li>
+      </ul></li>
+      <li><a href="autoapi/codino/process/index.html#codino.process.Converter._ct_to_aa">_ct_to_aa() (codino.process.Converter method)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/process/Converter/index.html#codino.process.Converter.Converter._ct_to_aa">(codino.process.Converter.Converter method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="codino.process.html#codino.process.Converter.Converter.aa_to_cd">aa_to_cd() (codino.process.Converter.Converter method)</a>
+      <li><a href="autoapi/codino/process/index.html#codino.process.Converter.aa_to_cd">aa_to_cd() (codino.process.Converter method)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/process/Converter/index.html#codino.process.Converter.Converter.aa_to_cd">(codino.process.Converter.Converter method)</a>
 </li>
+      </ul></li>
+      <li><a href="autoapi/codino/data/index.html#codino.data.AminoAcidTable.aa_to_codon">aa_to_codon() (codino.data.AminoAcidTable property)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/data/AminoAcidTable/index.html#codino.data.AminoAcidTable.AminoAcidTable.aa_to_codon">(codino.data.AminoAcidTable.AminoAcidTable property)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="codino.data.html#codino.data.AminoAcidTable.AminoAcidTable.aa_to_codon">aa_to_codon (codino.data.AminoAcidTable.AminoAcidTable property)</a>
+      <li><a href="autoapi/codino/data/index.html#codino.data.AminoAcidTable">AminoAcidTable (class in codino.data)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/data/AminoAcidTable/index.html#codino.data.AminoAcidTable.AminoAcidTable">(class in codino.data.AminoAcidTable)</a>
 </li>
-      <li><a href="codino.data.html#codino.data.AminoAcidTable.AminoAcidTable">AminoAcidTable (class in codino.data.AminoAcidTable)</a>
-</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="codino.process.html#codino.process.Converter.Converter.cd_to_aa">cd_to_aa() (codino.process.Converter.Converter method)</a>
+      <li><a href="autoapi/codino/process/index.html#codino.process.Converter.cd_to_aa">cd_to_aa() (codino.process.Converter method)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/process/Converter/index.html#codino.process.Converter.Converter.cd_to_aa">(codino.process.Converter.Converter method)</a>
 </li>
+      </ul></li>
       <li>
     codino
 
       <ul>
-        <li><a href="codino.html#module-codino">module</a>
+        <li><a href="autoapi/codino/index.html#module-codino">module</a>
 </li>
       </ul></li>
       <li>
     codino.data
 
       <ul>
-        <li><a href="codino.data.html#module-codino.data">module</a>
+        <li><a href="autoapi/codino/data/index.html#module-codino.data">module</a>
 </li>
       </ul></li>
       <li>
     codino.data.AminoAcidTable
 
       <ul>
-        <li><a href="codino.data.html#module-codino.data.AminoAcidTable">module</a>
+        <li><a href="autoapi/codino/data/AminoAcidTable/index.html#module-codino.data.AminoAcidTable">module</a>
 </li>
       </ul></li>
       <li>
     codino.data.CodonDesign
 
       <ul>
-        <li><a href="codino.data.html#module-codino.data.CodonDesign">module</a>
+        <li><a href="autoapi/codino/data/CodonDesign/index.html#module-codino.data.CodonDesign">module</a>
 </li>
       </ul></li>
       <li>
     codino.data.CodonTable
 
       <ul>
-        <li><a href="codino.data.html#module-codino.data.CodonTable">module</a>
+        <li><a href="autoapi/codino/data/CodonTable/index.html#module-codino.data.CodonTable">module</a>
 </li>
       </ul></li>
   </ul></td>
@@ -136,49 +206,73 @@
     codino.data.FreqTable
 
       <ul>
-        <li><a href="codino.data.html#module-codino.data.FreqTable">module</a>
+        <li><a href="autoapi/codino/data/FreqTable/index.html#module-codino.data.FreqTable">module</a>
 </li>
       </ul></li>
       <li>
     codino.process
 
       <ul>
-        <li><a href="codino.process.html#module-codino.process">module</a>
+        <li><a href="autoapi/codino/process/index.html#module-codino.process">module</a>
 </li>
       </ul></li>
       <li>
     codino.process.Converter
 
       <ul>
-        <li><a href="codino.process.html#module-codino.process.Converter">module</a>
+        <li><a href="autoapi/codino/process/Converter/index.html#module-codino.process.Converter">module</a>
 </li>
       </ul></li>
-      <li><a href="codino.data.html#codino.data.CodonDesign.CodonDesign">CodonDesign (class in codino.data.CodonDesign)</a>
+      <li><a href="autoapi/codino/data/index.html#codino.data.CodonDesign">CodonDesign (class in codino.data)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/data/CodonDesign/index.html#codino.data.CodonDesign.CodonDesign">(class in codino.data.CodonDesign)</a>
 </li>
-      <li><a href="codino.data.html#codino.data.CodonTable.CodonTable">CodonTable (class in codino.data.CodonTable)</a>
+      </ul></li>
+      <li><a href="autoapi/codino/data/index.html#codino.data.CodonTable">CodonTable (class in codino.data)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/data/CodonTable/index.html#codino.data.CodonTable.CodonTable">(class in codino.data.CodonTable)</a>
 </li>
-      <li><a href="codino.process.html#codino.process.Converter.Converter">Converter (class in codino.process.Converter)</a>
+      </ul></li>
+      <li><a href="autoapi/codino/process/index.html#codino.process.Converter">Converter (class in codino.process)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/process/Converter/index.html#codino.process.Converter.Converter">(class in codino.process.Converter)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="codino.data.html#codino.data.FreqTable.FreqTable.freq">freq (codino.data.FreqTable.FreqTable property)</a>
+      <li><a href="autoapi/codino/data/index.html#codino.data.FreqTable.freq">freq() (codino.data.FreqTable property)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/data/FreqTable/index.html#codino.data.FreqTable.FreqTable.freq">(codino.data.FreqTable.FreqTable property)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="codino.data.html#codino.data.FreqTable.FreqTable">FreqTable (class in codino.data.FreqTable)</a>
+      <li><a href="autoapi/codino/data/index.html#codino.data.FreqTable">FreqTable (class in codino.data)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/data/FreqTable/index.html#codino.data.FreqTable.FreqTable">(class in codino.data.FreqTable)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="codino.data.html#codino.data.FreqTable.FreqTable.get_non_0_freq">get_non_0_freq() (codino.data.FreqTable.FreqTable method)</a>
+      <li><a href="autoapi/codino/data/index.html#codino.data.FreqTable.get_non_0_freq">get_non_0_freq() (codino.data.FreqTable method)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/data/FreqTable/index.html#codino.data.FreqTable.FreqTable.get_non_0_freq">(codino.data.FreqTable.FreqTable method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -189,21 +283,21 @@
     module
 
       <ul>
-        <li><a href="codino.html#module-codino">codino</a>
+        <li><a href="autoapi/codino/index.html#module-codino">codino</a>
 </li>
-        <li><a href="codino.data.html#module-codino.data">codino.data</a>
+        <li><a href="autoapi/codino/data/index.html#module-codino.data">codino.data</a>
 </li>
-        <li><a href="codino.data.html#module-codino.data.AminoAcidTable">codino.data.AminoAcidTable</a>
+        <li><a href="autoapi/codino/data/AminoAcidTable/index.html#module-codino.data.AminoAcidTable">codino.data.AminoAcidTable</a>
 </li>
-        <li><a href="codino.data.html#module-codino.data.CodonDesign">codino.data.CodonDesign</a>
+        <li><a href="autoapi/codino/data/CodonDesign/index.html#module-codino.data.CodonDesign">codino.data.CodonDesign</a>
 </li>
-        <li><a href="codino.data.html#module-codino.data.CodonTable">codino.data.CodonTable</a>
+        <li><a href="autoapi/codino/data/CodonTable/index.html#module-codino.data.CodonTable">codino.data.CodonTable</a>
 </li>
-        <li><a href="codino.data.html#module-codino.data.FreqTable">codino.data.FreqTable</a>
+        <li><a href="autoapi/codino/data/FreqTable/index.html#module-codino.data.FreqTable">codino.data.FreqTable</a>
 </li>
-        <li><a href="codino.process.html#module-codino.process">codino.process</a>
+        <li><a href="autoapi/codino/process/index.html#module-codino.process">codino.process</a>
 </li>
-        <li><a href="codino.process.html#module-codino.process.Converter">codino.process.Converter</a>
+        <li><a href="autoapi/codino/process/Converter/index.html#module-codino.process.Converter">codino.process.Converter</a>
 </li>
       </ul></li>
   </ul></td>
@@ -212,10 +306,14 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="codino.data.html#codino.data.FreqTable.FreqTable.refresh">refresh() (codino.data.FreqTable.FreqTable method)</a>
+      <li><a href="autoapi/codino/data/index.html#codino.data.FreqTable.refresh">refresh() (codino.data.FreqTable method)</a>
 
       <ul>
-        <li><a href="codino.process.html#codino.process.Converter.Converter.refresh">(codino.process.Converter.Converter method)</a>
+        <li><a href="autoapi/codino/data/FreqTable/index.html#codino.data.FreqTable.FreqTable.refresh">(codino.data.FreqTable.FreqTable method)</a>
+</li>
+        <li><a href="autoapi/codino/process/index.html#codino.process.Converter.refresh">(codino.process.Converter method)</a>
+</li>
+        <li><a href="autoapi/codino/process/Converter/index.html#codino.process.Converter.Converter.refresh">(codino.process.Converter.Converter method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -224,8 +322,12 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="codino.data.html#codino.data.CodonDesign.CodonDesign.set_codon_design">set_codon_design() (codino.data.CodonDesign.CodonDesign method)</a>
+      <li><a href="autoapi/codino/data/index.html#codino.data.CodonDesign.set_codon_design">set_codon_design() (codino.data.CodonDesign method)</a>
+
+      <ul>
+        <li><a href="autoapi/codino/data/CodonDesign/index.html#codino.data.CodonDesign.CodonDesign.set_codon_design">(codino.data.CodonDesign.CodonDesign method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 

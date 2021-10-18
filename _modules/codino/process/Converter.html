@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>codino.process.Converter &mdash; codino  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/togglebutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/mystnb.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> codino
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../example.html">Example usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../conduct.html">Code of Conduct</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">codino</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>codino.process.Converter</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for codino.process.Converter</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">codino.data</span> <span class="kn">import</span> <span class="n">CodonDesign</span><span class="p">,</span> <span class="n">CodonTable</span><span class="p">,</span> <span class="n">AminoAcidTable</span>
+
+
+<div class="viewcode-block" id="Converter"><a class="viewcode-back" href="../../../autoapi/codino/process/index.html#codino.process.Converter.Converter">[docs]</a><span class="k">class</span> <span class="nc">Converter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Converter class for converting codon designs to amino acid</span>
+<span class="sd">        frequencies.</span>
+
+<span class="sd">        Contains methods to take as input the codon design (frequency of</span>
+<span class="sd">        nucleotides at each position) then return the AA frequencies they would</span>
+<span class="sd">        be predicted to generate. In future, Converter will hopefully also be</span>
+<span class="sd">        able to do the reverse.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cd</span> <span class="o">=</span> <span class="n">CodonDesign</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ct</span> <span class="o">=</span> <span class="n">CodonTable</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aat</span> <span class="o">=</span> <span class="n">AminoAcidTable</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Converter.cd_to_aa"><a class="viewcode-back" href="../../../autoapi/codino/process/index.html#codino.process.Converter.Converter.cd_to_aa">[docs]</a>    <span class="k">def</span> <span class="nf">cd_to_aa</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">second</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">third</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+                 <span class="n">refresh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Convert codon design to AA frequencies</span>
+
+<span class="sd">        Takes as input the nucleotide frequencies at each position in a codon,</span>
+<span class="sd">        then calculates the predicted AA frequencies.</span>
+
+<span class="sd">       Args:</span>
+<span class="sd">            first (dict): nucleotide frequencies for first position.</span>
+<span class="sd">            second (dict): nucleotide frequencies for second position.</span>
+<span class="sd">            third (dict): nucleotide frequencies for third position.</span>
+<span class="sd">            refresh (bool): Whether to refresh the frequencies in the Convertor</span>
+<span class="sd">            after obtaining the AA frequencies.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: Frequencies of the AA which are predicted to be generated from</span>
+<span class="sd">            the codon design.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">set_codon_design</span><span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">third</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cd_to_ct</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ct_to_aa</span><span class="p">()</span>
+
+        <span class="n">aa_freq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aat</span><span class="o">.</span><span class="n">get_non_0_freq</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">refresh</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">aa_freq</span></div>
+
+<div class="viewcode-block" id="Converter.aa_to_cd"><a class="viewcode-back" href="../../../autoapi/codino/process/index.html#codino.process.Converter.Converter.aa_to_cd">[docs]</a>    <span class="k">def</span> <span class="nf">aa_to_cd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">aa</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">refresh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Convert AA frequencies to codon design</span>
+
+<span class="sd">       Args:</span>
+<span class="sd">            aa (dict): AA frequencies.</span>
+<span class="sd">            refresh (bool): Whether to refresh the frequencies in the Convertor</span>
+<span class="sd">            after obtaining the codon design.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: Estimated codon design to obtain the inputted AA</span>
+<span class="sd">            frequencies.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aat</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">aa</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_aa_to_cd</span><span class="p">()</span>
+
+        <span class="n">cd_freq</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">get_non_0_freq</span><span class="p">(),</span>
+                   <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">second</span><span class="o">.</span><span class="n">get_non_0_freq</span><span class="p">(),</span>
+                   <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">third</span><span class="o">.</span><span class="n">get_non_0_freq</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="n">refresh</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">cd_freq</span></div>
+
+<div class="viewcode-block" id="Converter._cd_to_ct"><a class="viewcode-back" href="../../../autoapi/codino/process/index.html#codino.process.Converter.Converter._cd_to_ct">[docs]</a>    <span class="k">def</span> <span class="nf">_cd_to_ct</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Convert codon design into codon frequencies&quot;&quot;&quot;</span>
+        <span class="n">new_freq</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k1</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">freq</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">freq</span><span class="p">[</span><span class="n">k1</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">for</span> <span class="n">k2</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">second</span><span class="o">.</span><span class="n">freq</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">second</span><span class="o">.</span><span class="n">freq</span><span class="p">[</span><span class="n">k2</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">for</span> <span class="n">k3</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">third</span><span class="o">.</span><span class="n">freq</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">third</span><span class="o">.</span><span class="n">freq</span><span class="p">[</span><span class="n">k3</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+                        <span class="k">continue</span>
+                    <span class="n">codon</span> <span class="o">=</span> <span class="n">k1</span> <span class="o">+</span> <span class="n">k2</span> <span class="o">+</span> <span class="n">k3</span>
+                    <span class="n">freq</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">freq</span><span class="p">[</span><span class="n">k1</span><span class="p">]</span> <span class="o">*</span> \
+                           <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">second</span><span class="o">.</span><span class="n">freq</span><span class="p">[</span><span class="n">k2</span><span class="p">]</span> <span class="o">*</span> \
+                           <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">third</span><span class="o">.</span><span class="n">freq</span><span class="p">[</span><span class="n">k3</span><span class="p">]</span>
+
+                    <span class="n">new_freq</span><span class="p">[</span><span class="n">codon</span><span class="p">]</span> <span class="o">=</span> <span class="n">freq</span>
+
+        <span class="c1"># use freq.setter - check values sum to 1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ct</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">new_freq</span></div>
+
+<div class="viewcode-block" id="Converter._ct_to_aa"><a class="viewcode-back" href="../../../autoapi/codino/process/index.html#codino.process.Converter.Converter._ct_to_aa">[docs]</a>    <span class="k">def</span> <span class="nf">_ct_to_aa</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Convert codon frequencies to AA frequencies&quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">aa</span><span class="p">,</span> <span class="n">codons</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">aat</span><span class="o">.</span><span class="n">aa_to_codon</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># using list comprehension - try a generator here?</span>
+            <span class="n">freq</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">ct</span><span class="o">.</span><span class="n">freq</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">codons</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">aat</span><span class="o">.</span><span class="n">freq</span><span class="p">[</span><span class="n">aa</span><span class="p">]</span> <span class="o">=</span> <span class="n">freq</span></div>
+
+<div class="viewcode-block" id="Converter._aa_to_cd"><a class="viewcode-back" href="../../../autoapi/codino/process/index.html#codino.process.Converter.Converter._aa_to_cd">[docs]</a>    <span class="k">def</span> <span class="nf">_aa_to_cd</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Convert AA frequencies to codon frequencies&quot;&quot;&quot;</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+        <span class="n">third</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;G&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+
+        <span class="c1"># for each aa, for each codon, for each nucleotide</span>
+        <span class="c1"># sum the exp freq for the original AA divided by number of codons</span>
+        <span class="c1"># this will be an estimate of the codon design</span>
+        <span class="k">for</span> <span class="n">aa</span><span class="p">,</span> <span class="n">freq</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">aat</span><span class="o">.</span><span class="n">get_non_0_freq</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">codons</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aat</span><span class="o">.</span><span class="n">aa_to_codon</span><span class="p">[</span><span class="n">aa</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">codons</span><span class="p">:</span>
+                <span class="n">first</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">freq</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">codons</span><span class="p">)</span>
+                <span class="n">second</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">second</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">freq</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">codons</span><span class="p">)</span>
+                <span class="n">third</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="n">third</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">freq</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">codons</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">first</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">second</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">second</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">third</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">third</span></div>
+
+<div class="viewcode-block" id="Converter.refresh"><a class="viewcode-back" href="../../../autoapi/codino/process/index.html#codino.process.Converter.Converter.refresh">[docs]</a>    <span class="k">def</span> <span class="nf">refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Refresh the frequencies in the codon design, codon table and AA table</span>
+<span class="sd">        back to 0.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">first</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">second</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cd</span><span class="o">.</span><span class="n">third</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ct</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aat</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, David Zhang.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+:py:mod:`codino.data.AminoAcidTable`
+====================================
+
+.. py:module:: codino.data.AminoAcidTable
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   codino.data.AminoAcidTable.AminoAcidTable
+
+
+
+
+.. py:class:: AminoAcidTable
+
+   Bases: :py:obj:`codino.data.FreqTable`
+
+   .. py:method:: aa_to_codon(self) -> dict
+      :property:
+
+      Obtain the AA to codon mapping
+
+      :returns: details which AAs are encoded by which codons.
+      :rtype: dict
+
+
+

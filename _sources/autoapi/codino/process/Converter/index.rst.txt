@@ -1,0 +1,82 @@
+:py:mod:`codino.process.Converter`
+==================================
+
+.. py:module:: codino.process.Converter
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   codino.process.Converter.Converter
+
+
+
+
+.. py:class:: Converter
+
+   .. py:method:: cd_to_aa(self, first: dict, second: dict, third: dict, refresh: bool = True) -> dict
+
+      Convert codon design to AA frequencies
+
+       Takes as input the nucleotide frequencies at each position in a codon,
+       then calculates the predicted AA frequencies.
+
+      :param first: nucleotide frequencies for first position.
+      :type first: dict
+      :param second: nucleotide frequencies for second position.
+      :type second: dict
+      :param third: nucleotide frequencies for third position.
+      :type third: dict
+      :param refresh: Whether to refresh the frequencies in the Convertor
+      :type refresh: bool
+      :param after obtaining the AA frequencies.:
+
+       Returns:
+           dict: Frequencies of the AA which are predicted to be generated from
+           the codon design.
+
+
+
+   .. py:method:: aa_to_cd(self, aa: dict, refresh: bool = True) -> tuple
+
+      Convert AA frequencies to codon design
+
+      :param aa: AA frequencies.
+      :type aa: dict
+      :param refresh: Whether to refresh the frequencies in the Convertor
+      :type refresh: bool
+      :param after obtaining the codon design.:
+
+       Returns:
+           tuple: Estimated codon design to obtain the inputted AA
+           frequencies.
+
+
+
+   .. py:method:: _cd_to_ct(self) -> None
+
+      Convert codon design into codon frequencies
+
+
+   .. py:method:: _ct_to_aa(self) -> None
+
+      Convert codon frequencies to AA frequencies
+
+
+   .. py:method:: _aa_to_cd(self) -> None
+
+      Convert AA frequencies to codon frequencies
+
+
+   .. py:method:: refresh(self) -> None
+
+      Refresh the frequencies in the codon design, codon table and AA table
+      back to 0.
+
+
+

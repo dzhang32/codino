@@ -1,0 +1,24 @@
+:py:mod:`codino.data.CodonTable`
+================================
+
+.. py:module:: codino.data.CodonTable
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   codino.data.CodonTable.CodonTable
+
+
+
+
+.. py:class:: CodonTable
+
+   Bases: :py:obj:`codino.data.FreqTable`
+
+

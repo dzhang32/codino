@@ -1,0 +1,111 @@
+:py:mod:`codino.data`
+=====================
+
+.. py:module:: codino.data
+
+
+Submodules
+----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+
+   AminoAcidTable/index.rst
+   CodonDesign/index.rst
+   CodonTable/index.rst
+   FreqTable/index.rst
+
+
+Package Contents
+----------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   codino.data.FreqTable
+   codino.data.CodonDesign
+   codino.data.CodonTable
+   codino.data.AminoAcidTable
+
+
+
+
+.. py:class:: FreqTable(freq: dict)
+
+   .. py:method:: freq(self) -> dict
+      :property:
+
+      Get frequency table.
+
+      This gets the private attribute _freq. @property _freq should be be set
+      through freq.setter.
+
+
+   .. py:method:: refresh(self) -> None
+
+      Refresh/reset the values in the frequency table to 0.
+
+
+   .. py:method:: get_non_0_freq(self) -> dict
+
+      Obtain the elements with a non-0 frequency
+
+      :returns: contains elements with that have a frequency >0
+      :rtype: dict
+
+
+   .. py:method:: _check_dict(value) -> None
+      :staticmethod:
+
+      Check if value is a dictionary
+
+
+   .. py:method:: _check_keys(self, value: dict) -> None
+
+      Check if input keys are part of freq keys
+
+
+   .. py:method:: _check_values(self, value: dict) -> None
+
+      Check if input values are between 0-1 and sum to 0/1
+
+
+
+.. py:class:: CodonDesign
+
+   .. py:method:: set_codon_design(self, first: dict, second: dict, third: dict) -> None
+
+      Method for setting the codon design
+
+      Sets the frequency of the nucleotides at the 3 positions.
+
+      :param first: nucleotide frequencies for first position.
+      :type first: dict
+      :param second: nucleotide frequencies for second position.
+      :type second: dict
+      :param third: nucleotide frequencies for third position.
+      :type third: dict
+
+
+
+.. py:class:: CodonTable
+
+   Bases: :py:obj:`codino.data.FreqTable`
+
+
+.. py:class:: AminoAcidTable
+
+   Bases: :py:obj:`codino.data.FreqTable`
+
+   .. py:method:: aa_to_codon(self) -> dict
+      :property:
+
+      Obtain the AA to codon mapping
+
+      :returns: details which AAs are encoded by which codons.
+      :rtype: dict
+
+
+

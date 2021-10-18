@@ -1,0 +1,60 @@
+:py:mod:`codino.data.FreqTable`
+===============================
+
+.. py:module:: codino.data.FreqTable
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   codino.data.FreqTable.FreqTable
+
+
+
+
+.. py:class:: FreqTable(freq: dict)
+
+   .. py:method:: freq(self) -> dict
+      :property:
+
+      Get frequency table.
+
+      This gets the private attribute _freq. @property _freq should be be set
+      through freq.setter.
+
+
+   .. py:method:: refresh(self) -> None
+
+      Refresh/reset the values in the frequency table to 0.
+
+
+   .. py:method:: get_non_0_freq(self) -> dict
+
+      Obtain the elements with a non-0 frequency
+
+      :returns: contains elements with that have a frequency >0
+      :rtype: dict
+
+
+   .. py:method:: _check_dict(value) -> None
+      :staticmethod:
+
+      Check if value is a dictionary
+
+
+   .. py:method:: _check_keys(self, value: dict) -> None
+
+      Check if input keys are part of freq keys
+
+
+   .. py:method:: _check_values(self, value: dict) -> None
+
+      Check if input values are between 0-1 and sum to 0/1
+
+
+

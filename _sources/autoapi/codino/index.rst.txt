@@ -1,0 +1,24 @@
+:py:mod:`codino`
+================
+
+.. py:module:: codino
+
+
+Subpackages
+-----------
+.. toctree::
+   :titlesonly:
+   :maxdepth: 3
+
+   data/index.rst
+   process/index.rst
+
+
+Package Contents
+----------------
+
+.. py:data:: __version__
+   
+
+   
+

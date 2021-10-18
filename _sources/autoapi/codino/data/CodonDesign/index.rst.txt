@@ -1,0 +1,36 @@
+:py:mod:`codino.data.CodonDesign`
+=================================
+
+.. py:module:: codino.data.CodonDesign
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   codino.data.CodonDesign.CodonDesign
+
+
+
+
+.. py:class:: CodonDesign
+
+   .. py:method:: set_codon_design(self, first: dict, second: dict, third: dict) -> None
+
+      Method for setting the codon design
+
+      Sets the frequency of the nucleotides at the 3 positions.
+
+      :param first: nucleotide frequencies for first position.
+      :type first: dict
+      :param second: nucleotide frequencies for second position.
+      :type second: dict
+      :param third: nucleotide frequencies for third position.
+      :type third: dict
+
+
+

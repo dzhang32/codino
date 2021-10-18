@@ -5,12 +5,24 @@ Calculating amino acid frequencies from codon design, and vice versa
 ## Installation
 
 ```bash
-$ pip install codino
+pip install codino
 ```
 
 ## Usage
 
-- TODO
+```python
+from codino.process import Converter
+
+c = Converter()
+
+# converting from codon design to AA frequencies
+c.cd_to_aa(first = {"A": 1}, second = {"T": 1}, third = {"G": 1})
+# Out: {'M': 1}
+
+# converting from AA frequency to codon design
+c.aa_to_cd(aa={'M': 1})
+# Out: ({'A': 1.0}, {'T': 1.0}, {'G': 1.0})
+```
 
 ## Contributing
 
